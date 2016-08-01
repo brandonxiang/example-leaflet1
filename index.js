@@ -1,6 +1,6 @@
 var geojson;
 
-var map = L.map('map', { renderer: L.canvas() }).setView([37.77, -122.43], 6);
+var map = L.map('map', { renderer: L.canvas() }).setView([37.77, -122.43], 5);
 
 var base = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -13,7 +13,7 @@ var latlngs = [
 ];
 
 
-var marker = L.marker([37.77, -122.43]).addTo(map);
+var marker = L.marker([37.77, -122.43],{draggable:true}).addTo(map);
 var circleMarker = L.circleMarker([34.04, -118.2]).addTo(map);
 
 function getColor(d) {
@@ -73,7 +73,7 @@ function onEachFeature(feature, layer) {
 geojson = L.geoJson(statesData, {
     style: style,
     onEachFeature: onEachFeature
-}).addTo(map);
+});
 
 var polyline = L.polyline(latlngs).addTo(map);
 
@@ -82,4 +82,6 @@ L.control.layers({"base":base},{
     "circleMarker":circleMarker,
     "geojson":geojson,
     "polyline":polyline
-},{autoZIndex:false}).addTo(map);
+}).addTo(map);
+
+L.picMarker([45.51, -122.68]).addTo(map);
