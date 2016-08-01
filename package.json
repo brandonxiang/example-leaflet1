@@ -1,0 +1,23 @@
+{
+  "name": "example-leaflet1",
+  "version": "1.0.0",
+  "description": "An example to use the new feature of leaflet 1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"browser-sync start --server --files \"**/*.html,**/*.css,**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonxiang/example-leaflet1.git"
+  },
+  "keywords": [
+    "leaflet1"
+  ],
+  "author": "brandonxiang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brandonxiang/example-leaflet1/issues"
+  },
+  "homepage": "https://github.com/brandonxiang/example-leaflet1#readme"
+}
