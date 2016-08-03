@@ -84,4 +84,4 @@ L.control.layers({"base":base},{
     "polyline":polyline
 }).addTo(map);
 
-L.picMarker([45.51, -122.68]).addTo(map);
+L.pictureMarker([45.51, -122.68]).addTo(map);
