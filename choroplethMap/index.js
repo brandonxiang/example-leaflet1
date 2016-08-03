@@ -1,30 +1,20 @@
-var geojson;
-
-var map = L.map('map', { renderer: L.canvas() }).setView([37.77, -122.43], 5);
+var map = L.map('map', { renderer: L.canvas() }).setView([39.2832938689385, -93.7353515625], 5);
 
 var base = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-var latlngs = [
-    [45.51, -122.68],
-    [37.77, -122.43],
-    [34.04, -118.2]
-];
-
-
-var marker = L.marker([37.77, -122.43],{draggable:true}).addTo(map);
-var circleMarker = L.circleMarker([34.04, -118.2]).addTo(map);
+var geojson;
 
 function getColor(d) {
     return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
-                      '#FFEDA0';
+        d > 500 ? '#BD0026' :
+            d > 200 ? '#E31A1C' :
+                d > 100 ? '#FC4E2A' :
+                    d > 50 ? '#FD8D3C' :
+                        d > 20 ? '#FEB24C' :
+                            d > 10 ? '#FED976' :
+                                '#FFEDA0';
 }
 
 function style(feature) {
@@ -37,7 +27,6 @@ function style(feature) {
         fillOpacity: 0.7
     };
 }
-
 
 function highlightFeature(e) {
     var layer = e.target;
@@ -73,15 +62,4 @@ function onEachFeature(feature, layer) {
 geojson = L.geoJson(statesData, {
     style: style,
     onEachFeature: onEachFeature
-});
-
-var polyline = L.polyline(latlngs).addTo(map);
-
-L.control.layers({"base":base},{
-    "marker":marker,
-    "circleMarker":circleMarker,
-    "geojson":geojson,
-    "polyline":polyline
 }).addTo(map);
-
-L.pictureMarker([45.51, -122.68]).addTo(map);
